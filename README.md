@@ -1,1 +1,1 @@
-# rind-hapi [![](https://travis-ci.org/creativelive/hapi-rind.png)](https://travis-ci.org/creativelive/rind-hapi)
+# rind-hapi [![](https://travis-ci.org/creativelive/rind-hapi.png)](https://travis-ci.org/creativelive/rind-hapi)
