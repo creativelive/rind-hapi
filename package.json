@@ -1,6 +1,6 @@
 {
   "name": "rind-hapi",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "rind hapi plugin",
   "main": "index.js",
   "scripts": {
@@ -9,10 +9,10 @@
   "author": "Matthew Hadley (https://github.com/diffsky)",
   "license": "MIT",
   "dependencies": {
-    "underscore": "^1.6.0",
-    "tape": "^2.13.1"
+    "underscore": "^1.6.0"
   },
   "devDependencies": {
+    "abner": ">=0.0.3",
     "gulp": "^3.6.2",
     "minimist": "^0.1.0",
     "gulp-jsbeautifier": "0.0.2",
@@ -23,7 +23,8 @@
     "cli-color": "^0.3.2",
     "ejs": "^1.0.0",
     "moment": "^2.6.0",
-    "chaps": "^2.0.0"
+    "chaps": "^2.0.0",
+    "tape": "^2.13.1"
   },
   "directories": {
     "test": "test"
