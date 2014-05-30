@@ -29,7 +29,7 @@ test('plugin should add context object to views', function(t) {
       url: ':9615/'
     }, function(err, data) {
       if (err) {
-        t.fail('failed to talked totest server');
+        t.fail('failed to talk to test server');
       }
       server.stop(function() {
         console.log('server stopped');
