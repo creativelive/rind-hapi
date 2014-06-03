@@ -2,11 +2,21 @@
 
 var _ = require('underscore');
 var ua = require('./lib/ua');
+var deepval = require('deepval');
 
 var rind = {
   name: 'rind-hapi',
   version: '0.0.1',
   register: function(plugin, options, next) {
+
+    var conf = _.extend({}, options);
+    if (conf.redact) {
+      // remove any sensitive app config values from those potentially sent to client
+      conf.redact.forEach(function(r) {
+        deepval(conf, r, null, true);
+      });
+      deepval(conf, 'redact', null, true);
+    }
 
     var locale = require('rind-locale')({
       locales: options.locales
@@ -48,7 +58,7 @@ var rind = {
         context.dump = context.dump || {};
 
         // attach app conf values
-        context.rind.config = _.extend({}, options.conf);
+        context.rind.config = _.extend(conf);
 
         // attach locale details
         context.rind.context.locale = request.pre.locale || {};

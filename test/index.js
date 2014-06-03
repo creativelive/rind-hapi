@@ -19,9 +19,7 @@ test('plugin should add context object to views', function(t) {
   var options = {
     locales: ['en-US', 'de'],
     cwd: path.join(__dirname, 'lang'),
-    conf: {
-      foo: 'foo'
-    },
+    foo: 'foo',
     assets: {
       '/': {
         js: {
