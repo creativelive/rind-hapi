@@ -3,6 +3,7 @@
 var _ = require('underscore');
 var ua = require('./lib/ua');
 var deepval = require('deepval');
+var path = require('path');
 
 var rind = {
   name: 'rind-hapi',
@@ -23,7 +24,7 @@ var rind = {
     });
 
     var i18n = require('rind-i18n')({
-      cwd: options.cwd
+      cwd: path.join(path.dirname(module.parent.filename), 'lang')
     });
 
     var assets = require('./lib/assets')({
