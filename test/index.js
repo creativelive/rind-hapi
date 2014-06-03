@@ -24,11 +24,11 @@ test('plugin should add context object to views', function(t) {
     },
     assets: {
       '/': {
-        js : {
+        js: {
           i18n: ['foo'],
           main: ['bar']
         },
-        css : ['main']
+        css: ['main']
       }
     }
   };
