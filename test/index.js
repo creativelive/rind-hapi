@@ -10,18 +10,19 @@ var chaps = new Chaps({
 });
 var rind = require('..');
 var path = require('path');
-
-var options = {
-  locales: ['en-US', 'de'],
-  cwd: path.join(__dirname, 'lang'),
-  conf: {
-    foo: 'foo'
-  }
-};
-
+var fs = require('fs');
+var expected = fs.readFileSync(path.join(__dirname, 'expected.txt'), 'utf8');
 
 test('plugin should add context object to views', function(t) {
   t.plan(1);
+
+  var options = {
+    locales: ['en-US', 'de'],
+    cwd: path.join(__dirname, 'lang'),
+    conf: {
+      foo: 'foo'
+    }
+  };
 
   server.pack.register(rind, options, function(err) {
     if (err) {
@@ -47,7 +48,8 @@ test('plugin should add context object to views', function(t) {
     chaps.get({
       url: server.info.port,
       headers: {
-        'accept-language': 'de'
+        'accept-language': 'de',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36'
       }
     }, function(err, data) {
       if (err) {
@@ -57,8 +59,8 @@ test('plugin should add context object to views', function(t) {
         console.log('server stopped');
       });
       console.log(data.text);
-      console.log('output:', data.text);
-      t.equal(data.text, 'foo\nbar\nhallo\n');
+
+      t.equal(data.text, expected);
     });
   });
 });

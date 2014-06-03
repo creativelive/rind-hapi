@@ -1,0 +1,5 @@
+rind.config.foo:foo
+dump:bar
+rind.context.locale:de
+i18n.foo.main.greeting:hallo
+rind.context.ua.family:Chrome

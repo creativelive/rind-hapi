@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('underscore');
+var useragent = require('useragent');
 
 var rind = {
   name: 'rind-hapi',
@@ -19,6 +20,12 @@ var rind = {
       request.pre.locale = locale(request.query.locale || request.headers['accept-language']);
       request.pre.lang = request.pre.locale.substring(0, 2);
       request.pre.i18n = i18n[request.pre.locale];
+
+      try {
+        request.pre.ua = useragent.lookup(request.headers['user-agent']).toJSON();
+      } catch (e) {
+        request.pre.ua = {};
+      }
 
       extNext();
     });
@@ -46,6 +53,9 @@ var rind = {
 
         // add i18n functions to top level scope
         context.i18n = request.pre.i18n || {};
+
+        // attach useragent info
+        context.rind.context.ua = request.pre.ua || {};
 
       }
       extNext();
