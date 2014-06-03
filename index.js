@@ -1,7 +1,7 @@
 'use strict';
 
 var _ = require('underscore');
-var useragent = require('useragent');
+var ua = require('./lib/ua');
 
 var rind = {
   name: 'rind-hapi',
@@ -16,17 +16,19 @@ var rind = {
       cwd: options.cwd
     });
 
+    var assets = require('./lib/assets')({
+      assets: options.assets
+    });
+
     plugin.ext('onRequest', function(request, extNext) {
+      request.headers = request.headers || {};
+      request.query = request.query || {};
+
       request.pre.locale = locale(request.query.locale || request.headers['accept-language']);
       request.pre.lang = request.pre.locale.substring(0, 2);
       request.pre.i18n = i18n[request.pre.locale];
-
-      try {
-        request.pre.ua = useragent.lookup(request.headers['user-agent']).toJSON();
-      } catch (e) {
-        request.pre.ua = {};
-      }
-
+      request.pre.ua = ua(request.headers['user-agent']);
+      request.pre.assets = assets(request.url);
       extNext();
     });
 
@@ -56,6 +58,9 @@ var rind = {
 
         // attach useragent info
         context.rind.context.ua = request.pre.ua || {};
+
+        // attach assets to serve
+        context.rind.context.assets = request.pre.assets || {};
 
       }
       extNext();
