@@ -9,15 +9,21 @@ var chaps = new Chaps({
   timeout: 2000
 });
 var rind = require('..');
+var path = require('path');
+
+var options = {
+  locales: ['en-US', 'de'],
+  cwd: path.join(__dirname, 'lang'),
+  conf: {
+    foo: 'foo'
+  }
+};
+
 
 test('plugin should add context object to views', function(t) {
   t.plan(1);
 
-  server.pack.register(rind, {
-    conf: {
-      foo: 'foo'
-    }
-  }, function(err) {
+  server.pack.register(rind, options, function(err) {
     if (err) {
       console.log('Failed loading plugin');
     }
@@ -39,7 +45,10 @@ test('plugin should add context object to views', function(t) {
   server.start(function() {
     console.log('server started:', server.info.uri);
     chaps.get({
-      url: server.info.port
+      url: server.info.port,
+      headers: {
+        'accept-language': 'de'
+      }
     }, function(err, data) {
       if (err) {
         t.fail('failed to talk to test server');
@@ -47,8 +56,9 @@ test('plugin should add context object to views', function(t) {
       server.stop(function() {
         console.log('server stopped');
       });
+      console.log(data.text);
       console.log('output:', data.text);
-      t.equal(data.text, 'true foo bar\n');
+      t.equal(data.text, 'foo\nbar\nhallo\n');
     });
   });
 });
