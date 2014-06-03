@@ -8,6 +8,9 @@ var path = require('path');
 var rind = {
   name: 'rind-hapi',
   version: '0.0.1',
+  attributes: {
+    pkg: require('./package.json')
+  },
   register: function(plugin, options, next) {
 
     var conf = _.extend({}, options);
