@@ -1,6 +1,6 @@
 rind.config.foo:foo
 dump:bar
 rind.context.lang:de
-i18n.foo.main.greeting:hallo
+i18n['foo/main'].greeting:hallo
 rind.context.ua.family:Chrome
 rind.context.assets.js.i18n:foo
