@@ -13,7 +13,7 @@ var rind = {
   },
   register: function(plugin, options, next) {
 
-    var conf = _.extend({}, options);
+    var conf = _.extend({}, options.conf);
     if (conf.redact) {
       // remove any sensitive app config values from those potentially sent to client
       conf.redact.forEach(function(r) {
@@ -76,6 +76,8 @@ var rind = {
         // attach assets to serve
         context.rind.context.assets = request.pre.assets || {};
 
+        // add the assets hash (allows production asset mapping) to top level scope
+        context.hash = options.hash;
       }
       extNext();
     });

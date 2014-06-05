@@ -1,6 +1,7 @@
-rind.config.foo:foo
+hash['/sample.txt']:/sample.3453fg1.txt
 dump:bar
-rind.context.lang:de
 i18n['foo/main'].greeting:hallo
+rind.config.foo:foo
+rind.context.lang:de
 rind.context.ua.family:Chrome
 rind.context.assets.js.i18n:foo
