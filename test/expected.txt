@@ -1,6 +1,6 @@
 hash['/sample.txt']:/sample.3453fg1.txt
 dump:bar
-i18n['foo/main'].greeting:hallo
+i18n['foo/main'].GREETING:hallo
 rind.config.foo:foo
 rind.context.lang:de
 rind.context.ua.family:Chrome
