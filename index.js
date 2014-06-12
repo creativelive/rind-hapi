@@ -27,7 +27,8 @@ var rind = {
     });
 
     var i18n = require('rind-i18n')({
-      cwd: path.join(path.dirname(module.parent.filename), 'lang')
+      cwd: path.join(path.dirname(module.parent.filename), 'lang'),
+      strict: options.i18nStrict || false
     });
 
     var assets = require('./lib/assets')({
