@@ -1,6 +1,6 @@
 {
   "name": "rind-hapi",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "rind hapi plugin",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "underscore": "^1.6.0",
-    "rind-i18n": ">=0.2.1",
+    "rind-i18n": ">=0.2.2",
     "rind-locale": ">=0.0.2",
     "useragent": "^2.0.8",
     "deepval": "^1.1.3"
