@@ -1,6 +1,6 @@
 {
   "name": "rind-hapi",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "rind hapi plugin",
   "main": "index.js",
   "scripts": {
