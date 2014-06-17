@@ -1,7 +1,10 @@
 hash['/sample.txt']:/sample.3453fg1.txt
 dump:bar
+cookie.aaa:bbb
 i18n['foo/main'].GREETING:hallo
 rind.config.foo:foo
 rind.context.lang:de
 rind.context.ua.family:Chrome
 rind.context.assets.js.i18n:foo
+rind.context.pathname:/
+rind.context.url:http://localhost:9615/

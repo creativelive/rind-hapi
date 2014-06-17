@@ -78,6 +78,19 @@ var rind = {
 
         // add the assets hash (allows production asset mapping) to top level scope
         context.hash = options.hash;
+
+        // add each individual cookie to the context under the key "cookie"
+        context.cookie = {};
+        _.each(request.state, function(cookie, key) {
+          context.cookie[key] = cookie;
+        });
+
+        // make pathname available
+        context.rind.context.pathname = request.path;
+
+        // add url to the context
+        context.rind.context.url = context.rind.context.url || request.server.info.protocol + '://' + request.info.host + request.path;
+
       }
       extNext();
     });

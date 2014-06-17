@@ -61,7 +61,8 @@ test('plugin should add context object to views', function(t) {
       url: server.info.port,
       headers: {
         'accept-language': 'de',
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36',
+        'Cookie': 'aaa=bbb'
       }
     }, function(err, data) {
       if (err) {
