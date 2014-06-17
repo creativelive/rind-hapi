@@ -1,6 +1,7 @@
 hash['/sample.txt']:/sample.3453fg1.txt
 dump:bar
-cookie.aaa:bbb
+cookie.rind.aaa:true
+cookie.rind.bbb:ccc
 i18n['foo/main'].GREETING:hallo
 rind.config.foo:foo
 rind.context.lang:de

@@ -85,6 +85,20 @@ var rind = {
           context.cookie[key] = cookie;
         });
 
+        // parse rind debug cookie
+        if (context.cookie.rind) {
+          var rindCookie = {};
+          try {
+            context.cookie.rind.split('|').forEach(function(kvp) {
+              kvp = kvp.split(':');
+              var key = kvp[0];
+              var value = kvp[1] || true;
+              rindCookie[key] = value;
+            });
+          } catch (e) {}
+          context.cookie.rind = rindCookie;
+        }
+
         // make pathname available
         context.rind.context.pathname = request.path;
 
