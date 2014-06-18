@@ -53,10 +53,9 @@ var rind = {
         var context = response.source.context;
 
         // create the rind object
-        context.rind = {
-          context: {},
-          config: {}
-        };
+        context.rind = context.rind || {};
+        context.rind.context = context.rind.context || {};
+        context.rind.config = context.rind.config || {};
 
         // populate dump
         context.dump = context.dump || {};
