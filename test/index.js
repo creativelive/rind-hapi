@@ -36,7 +36,11 @@ test('plugin should add context object to views', function(t) {
     }
   };
 
-  server.pack.register(rind, options, function(err) {
+  server.pack.register({
+    name: 'rind-hapi',
+    plugin: rind,
+    options: options
+  }, function(err) {
     if (err) {
       console.log('Failed loading plugin');
     }
